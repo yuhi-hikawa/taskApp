@@ -62,6 +62,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
+        
+        taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: false)
+        tableView.reloadData()
+        print("123")
     }
     
     // MARK: UITableViewDataSourceプロトコルのメソッド
